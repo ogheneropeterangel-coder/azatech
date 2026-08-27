@@ -146,7 +146,7 @@ function IndustryBlock({ title, description, points, image, index }: { title: st
         transition={{ duration: 0.7, delay: 0.1 }}
         className={`aspect-[4/3] rounded-lg overflow-hidden ${isReversed ? 'lg:order-1' : ''}`}
       >
-        <img src={image} alt={title} className="w-full h-full object-cover" />
+        <img src={image} alt={`${title} - medical and laboratory equipment solutions`} loading="lazy" decoding="async" className="w-full h-full object-cover" />
       </motion.div>
     </div>
   );

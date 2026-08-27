@@ -20,6 +20,7 @@ export default function Navbar() {
   return (
     <>
       <nav
+        aria-label="Main navigation"
         className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
           isScrolled ? 'bg-white/95 backdrop-blur-md shadow-sm' : 'bg-transparent'
         }`}
@@ -27,6 +28,13 @@ export default function Navbar() {
         <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
           <div className={`flex items-center justify-between transition-all duration-300 ${isScrolled ? 'h-16' : 'h-20'}`}>
             <Link to="/" className="flex items-center gap-2 shrink-0">
+              <img
+                src="/logo.jpg"
+                alt="Azatech Global Supply Chain Limited"
+                width={40}
+                height={40}
+                className="w-10 h-10 rounded-md object-cover"
+              />
               <div className="flex flex-col">
                 <span className={`text-xl font-bold tracking-tight transition-colors ${isScrolled ? 'text-navy' : 'text-white'}`}>
                   AZATECH

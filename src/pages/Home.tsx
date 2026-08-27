@@ -98,7 +98,9 @@ function Introduction() {
             <div className="aspect-[4/3] rounded-lg overflow-hidden">
               <img
                 src={IMG.medicalProfessional}
-                alt="Medical technology environment"
+                alt="Medical technology environment for healthcare facilities"
+                loading="lazy"
+                decoding="async"
                 className="w-full h-full object-cover"
               />
             </div>
@@ -346,6 +348,10 @@ function CTABanner() {
         <img
           src={IMG.portCranes}
           alt=""
+          role="presentation"
+          aria-hidden="true"
+          loading="lazy"
+          decoding="async"
           className="w-full h-full object-cover"
         />
       </div>

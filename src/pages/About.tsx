@@ -90,7 +90,7 @@ function AboutCarousel() {
         <motion.img
           key={current}
           src={ABOUT_IMAGES[current]}
-          alt="Azatech operations"
+          alt="Azatech Global Supply Chain - medical equipment and laboratory technology operations"
           custom={direction}
           initial={{ x: direction > 0 ? '100%' : '-100%' }}
           animate={{ x: 0 }}

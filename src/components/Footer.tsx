@@ -8,9 +8,18 @@ export default function Footer() {
       <div className="max-w-[1400px] mx-auto px-6 lg:px-12 py-16 lg:py-20">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12">
           <div className="lg:col-span-1">
-            <div className="flex flex-col mb-6">
-              <span className="text-2xl font-bold tracking-tight">AZATECH</span>
-              <span className="text-[10px] tracking-[0.15em] uppercase font-medium text-gold mt-0.5">
+            <div className="mb-6">
+              <img
+                src="/logo.jpg"
+                alt="Azatech Global Supply Chain Limited"
+                width={56}
+                height={56}
+                loading="lazy"
+                decoding="async"
+                className="w-14 h-14 rounded-md object-cover mb-4"
+              />
+              <span className="block text-2xl font-bold tracking-tight">AZATECH</span>
+              <span className="block text-[10px] tracking-[0.15em] uppercase font-medium text-gold mt-0.5">
                 Global Supply Chain
               </span>
             </div>
@@ -24,7 +33,9 @@ export default function Footer() {
             <ul className="space-y-3">
               <li><Link to="/about" className="text-sm text-gray-400 hover:text-white transition-colors">About</Link></li>
               <li><Link to="/solutions" className="text-sm text-gray-400 hover:text-white transition-colors">Solutions</Link></li>
+              <li><Link to="/supply-chain" className="text-sm text-gray-400 hover:text-white transition-colors">Supply Chain</Link></li>
               <li><Link to="/industries" className="text-sm text-gray-400 hover:text-white transition-colors">Industries</Link></li>
+              <li><Link to="/request-quote" className="text-sm text-gray-400 hover:text-white transition-colors">Request a Quote</Link></li>
               <li><Link to="/contact" className="text-sm text-gray-400 hover:text-white transition-colors">Contact</Link></li>
             </ul>
           </div>

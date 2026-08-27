@@ -2,6 +2,18 @@ export const WHATSAPP_NUMBER = '2348060860749';
 
 export const WHATSAPP_LINK = `https://wa.me/${WHATSAPP_NUMBER}`;
 
+export const SITE_URL = 'https://azatechglobalsupplychainlimited.com';
+
+export const SITE_NAME = 'Azatech Global Supply Chain Limited';
+
+export const CONTACT_EMAIL = 'azatechglobalsupplychain@gmail.com';
+
+export const CONTACT_PHONE_DISPLAY = '+234 806 086 0749';
+
+export const CONTACT_PHONE_TEL = '+2348060860749';
+
+export const DEFAULT_OG_IMAGE = `${SITE_URL}/logo.jpg`;
+
 export function buildWhatsAppMessage(message: string): string {
   const base = 'Hello Azatech Global Supply Chain Limited,';
   return `${encodeURIComponent(base)}\n\n${encodeURIComponent(message)}`;
@@ -10,8 +22,6 @@ export function buildWhatsAppMessage(message: string): string {
 export function getWhatsAppLink(message: string): string {
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${buildWhatsAppMessage(message)}`;
 }
-
-export const SITE_NAME = 'Azatech Global Supply Chain Limited';
 
 export const NAV_ITEMS = [
   { label: 'Home', path: '/' },
@@ -110,35 +120,43 @@ export const SOLUTION_ITEMS = [
 
 export const META_DEFAULTS = {
   home: {
-    title: 'Azatech Global Supply Chain Limited | Medical Equipment & Technology Solutions',
-    description: 'Azatech Global Supply Chain Limited connects organizations with medical equipment, laboratory technology, specialized technology solutions and supply-chain services.',
+    path: '/',
+    title: 'Azatech Global Supply Chain Limited | Medical & Laboratory Equipment Supplier in Nigeria',
+    description: 'Azatech Global Supply Chain Limited is a medical equipment and laboratory equipment supplier in Nigeria, offering sourcing, supply-chain coordination and delivery of diagnostic equipment and medical technology solutions.',
   },
   about: {
-    title: 'About Azatech | Global Supply Chain & Technology Solutions',
-    description: 'Learn about Azatech Global Supply Chain Limited and our approach to connecting organizations with medical equipment, laboratory technology and specialized solutions.',
+    path: '/about',
+    title: 'About Azatech | Medical Technology Solutions & Global Supply Chain in Nigeria',
+    description: 'Learn how Azatech Global Supply Chain Limited helps hospitals, laboratories and organizations source medical and laboratory equipment with professional supply-chain coordination and support.',
   },
   equipment: {
-    title: 'Medical Equipment & Diagnostic Technology | Azatech',
-    description: 'Explore medical imaging, laboratory, clinical and diagnostic equipment categories from Azatech Global Supply Chain Limited.',
+    path: '/equipment',
+    title: 'Medical & Laboratory Equipment for Nigeria | Azatech Global Supply Chain',
+    description: 'Explore medical imaging, laboratory, diagnostic and clinical equipment from Azatech — a medical equipment supplier and sourcing partner for healthcare facilities in Nigeria.',
   },
   solutions: {
-    title: 'Technology & Supply Chain Solutions | Azatech',
-    description: 'Azatech provides equipment sourcing, laboratory solutions, medical technology and supply chain coordination services.',
+    path: '/solutions',
+    title: 'Medical Technology & Equipment Sourcing Solutions | Azatech Nigeria',
+    description: 'Azatech provides equipment sourcing, laboratory technology solutions, global supply connections and logistics coordination for medical equipment in Nigeria.',
   },
   'supply-chain': {
-    title: 'Supply Chain & Logistics | Azatech Global Supply Chain',
-    description: 'Azatech coordinates the journey from equipment sourcing through logistics and delivery with professional supply chain support.',
+    path: '/supply-chain',
+    title: 'Global Supply Chain & Logistics for Medical Equipment | Azatech Nigeria',
+    description: 'Azatech coordinates the journey from medical equipment sourcing through logistics and delivery — connecting Nigeria to global supply opportunities with professional support.',
   },
   industries: {
-    title: 'Industries We Serve | Azatech Global Supply Chain',
-    description: 'Azatech serves hospitals, medical laboratories, diagnostic centres, clinics, healthcare projects and organizations.',
+    path: '/industries',
+    title: 'Industries We Serve | Medical & Laboratory Equipment | Azatech Nigeria',
+    description: 'Azatech serves hospitals, medical laboratories, diagnostic centres, clinics and healthcare projects across Nigeria with medical equipment and laboratory technology solutions.',
   },
   contact: {
-    title: 'Contact Azatech Global Supply Chain Limited',
-    description: 'Get in touch with Azatech for medical equipment, laboratory technology and supply chain solutions.',
+    path: '/contact',
+    title: 'Contact Azatech | Laboratory Equipment Supplier in Nigeria',
+    description: 'Contact Azatech Global Supply Chain Limited for medical equipment, laboratory equipment and technology solutions. Reach our team by phone or WhatsApp at 0806 086 0749.',
   },
   quote: {
-    title: 'Request a Quote | Azatech Global Supply Chain',
-    description: 'Request a quote for medical equipment, laboratory technology or specialized supply chain solutions from Azatech.',
+    path: '/request-quote',
+    title: 'Request a Quote | Medical & Laboratory Equipment | Azatech Nigeria',
+    description: 'Request a quote from Azatech for medical equipment, laboratory technology or specialized supply-chain solutions. Share your requirement and we will respond promptly.',
   },
 };

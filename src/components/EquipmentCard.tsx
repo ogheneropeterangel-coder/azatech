@@ -34,7 +34,9 @@ export default function EquipmentCard({ name, category, description, image }: Eq
         ) : (
           <img
             src={imgSrc}
-            alt={name}
+            alt={`${name} - ${category} medical and laboratory equipment`}
+            loading="lazy"
+            decoding="async"
             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-102"
           />
         )}
@@ -75,6 +77,8 @@ function ImageCarousel({ images, alt }: { images: string[]; alt: string }) {
           key={current}
           src={images[current]}
           alt={alt}
+          loading="lazy"
+          decoding="async"
           initial={{ opacity: 0, scale: 1.05 }}
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0 }}
