@@ -35,6 +35,22 @@ export const IMG = {
   globalMap: u('photo-1526778548025-fa2f459cd5c1', 1600),
 };
 
+// Supplier / product photography (ibb.co)
+export const IMG_IBB = {
+  automaticRefractometer: 'https://i.ibb.co/d4W00k43/AUTO-REFRACTOMETERS.png',
+  elisaAnalyzer: 'https://i.ibb.co/60g4FXGz/AUTOMATED-ELISA-ANALYZERS.png',
+  tool: 'https://i.ibb.co/0pvymzJf/tool.png',
+};
+
+// About page carousel images
+export const ABOUT_IMAGES = [
+  'https://i.ibb.co/F4Bhytfw/aboutpage5.png',
+  'https://i.ibb.co/spmCK5Xp/aboutpage4.png',
+  'https://i.ibb.co/1tMDY5FF/aboutpage3.png',
+  'https://i.ibb.co/TqhqWYYc/aboutpage2.png',
+  'https://i.ibb.co/F4pZfHNW/aboutpage1.png',
+];
+
 // Equipment category -> representative image
 export const EQUIPMENT_IMAGES: Record<string, string> = {
   'Medical Imaging': IMG.radiology,
@@ -52,9 +68,14 @@ export const EQUIPMENT_ITEM_IMAGES: Record<string, string> = {
   'DSA Systems': IMG.radiology,
   'Anesthesia Machines': IMG.surgery,
   'Hemodialysis Equipment': IMG.doctor,
-  'Automatic Refractometers': IMG.stethoscope,
+  'Automatic Refractometers': IMG_IBB.automaticRefractometer,
   'Slit Lamps': IMG.stethoscope,
-  'Automated ELISA Analyzers': IMG.labMicroscope,
+  'Automated ELISA Analyzers': IMG_IBB.elisaAnalyzer,
+};
+
+// Equipment items that show multiple product photos in a mini carousel
+export const EQUIPMENT_ITEM_GALLERY: Record<string, string[]> = {
+  'Automated ELISA Analyzers': [IMG_IBB.elisaAnalyzer, IMG_IBB.tool],
 };
 
 // Homepage hero carousel slides

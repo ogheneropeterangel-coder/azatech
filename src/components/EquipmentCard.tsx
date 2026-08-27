@@ -1,8 +1,9 @@
-import { motion } from 'framer-motion';
+import { useEffect, useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Info } from 'lucide-react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import { getWhatsAppLink } from '../utils/constants';
-import { EQUIPMENT_IMAGES, EQUIPMENT_ITEM_IMAGES } from '../utils/images';
+import { EQUIPMENT_IMAGES, EQUIPMENT_ITEM_GALLERY, EQUIPMENT_ITEM_IMAGES } from '../utils/images';
 import CTAButton from './CTAButton';
 
 interface EquipmentCardProps {
@@ -15,6 +16,7 @@ interface EquipmentCardProps {
 export default function EquipmentCard({ name, category, description, image }: EquipmentCardProps) {
   const { ref, isVisible } = useScrollReveal(0.1);
   const imgSrc = image || EQUIPMENT_ITEM_IMAGES[name] || EQUIPMENT_IMAGES[category] || EQUIPMENT_IMAGES['Medical Imaging'];
+  const gallery = EQUIPMENT_ITEM_GALLERY[name];
   const whatsAppMsg = `I am interested in learning more about:\n\nEquipment: ${name}\n\nI would like to receive more information about availability, specifications and supply options.\n\nThank you.`;
 
   return (
@@ -27,11 +29,15 @@ export default function EquipmentCard({ name, category, description, image }: Eq
     >
       <div className="relative h-52 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-t from-navy/30 to-transparent z-10" />
-        <img
-          src={imgSrc}
-          alt={name}
-          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-102"
-        />
+        {gallery ? (
+          <ImageCarousel images={gallery} alt={name} />
+        ) : (
+          <img
+            src={imgSrc}
+            alt={name}
+            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-102"
+          />
+        )}
         <span className="absolute top-4 left-4 z-20 bg-gold text-navy text-[10px] tracking-wider uppercase font-medium px-3 py-1 rounded-sm">
           {category}
         </span>
@@ -49,5 +55,45 @@ export default function EquipmentCard({ name, category, description, image }: Eq
         </CTAButton>
       </div>
     </motion.div>
+  );
+}
+
+function ImageCarousel({ images, alt }: { images: string[]; alt: string }) {
+  const [current, setCurrent] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrent((prev) => (prev + 1) % images.length);
+    }, 3500);
+    return () => clearInterval(timer);
+  }, [images.length]);
+
+  return (
+    <div className="relative w-full h-full">
+      <AnimatePresence initial={false}>
+        <motion.img
+          key={current}
+          src={images[current]}
+          alt={alt}
+          initial={{ opacity: 0, scale: 1.05 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.6, ease: 'easeOut' }}
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+      </AnimatePresence>
+      <div className="absolute bottom-3 left-1/2 -translate-x-1/2 z-20 flex gap-1.5">
+        {images.map((_, i) => (
+          <button
+            key={i}
+            onClick={() => setCurrent(i)}
+            className={`h-1.5 rounded-full transition-all duration-300 ${
+              i === current ? 'w-5 bg-gold' : 'w-1.5 bg-white/70'
+            }`}
+            aria-label={`View image ${i + 1} of ${alt}`}
+          />
+        ))}
+      </div>
+    </div>
   );
 }

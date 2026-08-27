@@ -3,7 +3,7 @@ import CTAButton from '../components/CTAButton';
 import { motion } from 'framer-motion';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import { ChevronRight, MessageCircle } from 'lucide-react';
-import { IMG } from '../utils/images';
+import { IMG, IMG_IBB } from '../utils/images';
 import { META_DEFAULTS, SOLUTION_ITEMS, getWhatsAppLink } from '../utils/constants';
 
 export default function Solutions() {
@@ -45,7 +45,7 @@ function SolutionBlock({ title, description, index }: { title: string; descripti
   const { ref, isVisible } = useScrollReveal(0.1);
   const isReversed = index % 2 === 1;
   const images = [
-    IMG.labGlassware,
+    IMG_IBB.elisaAnalyzer,
     IMG.labTestTubes,
     IMG.radiology,
     IMG.globalNetwork,

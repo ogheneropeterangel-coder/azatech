@@ -3,7 +3,7 @@ import EquipmentCard from '../components/EquipmentCard';
 import { motion } from 'framer-motion';
 import { EQUIPMENT_CATEGORIES, getWhatsAppLink, META_DEFAULTS } from '../utils/constants';
 import CTAButton from '../components/CTAButton';
-import { IMG } from '../utils/images';
+import { IMG_IBB } from '../utils/images';
 import { MessageCircle } from 'lucide-react';
 
 export default function Equipment() {
@@ -13,7 +13,7 @@ export default function Equipment() {
 
       <section className="relative h-[50vh] min-h-[400px] bg-navy flex items-center">
         <div className="absolute inset-0 opacity-20">
-          <img src={IMG.radiology} alt="" className="w-full h-full object-cover" />
+          <img src={IMG_IBB.automaticRefractometer} alt="" className="w-full h-full object-cover" />
         </div>
         <div className="relative z-10 max-w-[1400px] mx-auto px-6 lg:px-12 w-full">
           <motion.span initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="text-xs tracking-[0.2em] uppercase font-medium text-gold mb-4 inline-block">

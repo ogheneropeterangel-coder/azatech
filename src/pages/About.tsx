@@ -1,10 +1,11 @@
 import SEO from '../components/SEO';
 import SectionHeader from '../components/SectionHeader';
 import CTAButton from '../components/CTAButton';
-import { motion } from 'framer-motion';
+import { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useScrollReveal } from '../hooks/useScrollReveal';
-import { MessageCircle } from 'lucide-react';
-import { IMG } from '../utils/images';
+import { MessageCircle, ChevronLeft, ChevronRight } from 'lucide-react';
+import { IMG, ABOUT_IMAGES } from '../utils/images';
 import { META_DEFAULTS, getWhatsAppLink } from '../utils/constants';
 
 export default function About() {
@@ -37,9 +38,7 @@ export default function About() {
                 We believe supply should be more than a transaction. It should be a coordinated journey — from understanding the requirement to identifying supply opportunities, moving equipment and supporting the client beyond delivery.
               </p>
             </div>
-            <div className="aspect-[4/3] rounded-lg overflow-hidden">
-              <img src={IMG.labGlassware} alt="Laboratory technology" className="w-full h-full object-cover" />
-            </div>
+            <AboutCarousel />
           </div>
         </div>
       </section>
@@ -59,6 +58,70 @@ export default function About() {
 
       <CTABanner />
     </>
+  );
+}
+
+function AboutCarousel() {
+  const [current, setCurrent] = useState(0);
+  const [direction, setDirection] = useState(1);
+
+  const paginate = (dir: number) => {
+    setDirection(dir);
+    setCurrent((prev) => (prev + dir + ABOUT_IMAGES.length) % ABOUT_IMAGES.length);
+  };
+
+  useEffect(() => {
+    const timer = setInterval(() => paginate(1), 5000);
+    return () => clearInterval(timer);
+  }, []);
+
+  return (
+    <div className="relative aspect-[4/3] rounded-lg overflow-hidden group">
+      <AnimatePresence initial={false} custom={direction}>
+        <motion.img
+          key={current}
+          src={ABOUT_IMAGES[current]}
+          alt="Azatech operations"
+          custom={direction}
+          initial={{ x: direction > 0 ? '100%' : '-100%' }}
+          animate={{ x: 0 }}
+          exit={{ x: direction > 0 ? '-100%' : '100%' }}
+          transition={{ duration: 0.6, ease: 'easeInOut' }}
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+      </AnimatePresence>
+
+      <button
+        onClick={() => paginate(-1)}
+        aria-label="Previous image"
+        className="absolute left-3 top-1/2 -translate-y-1/2 z-10 p-2 bg-white/80 backdrop-blur text-navy rounded-full opacity-0 group-hover:opacity-100 transition-opacity hover:bg-white"
+      >
+        <ChevronLeft size={18} />
+      </button>
+      <button
+        onClick={() => paginate(1)}
+        aria-label="Next image"
+        className="absolute right-3 top-1/2 -translate-y-1/2 z-10 p-2 bg-white/80 backdrop-blur text-navy rounded-full opacity-0 group-hover:opacity-100 transition-opacity hover:bg-white"
+      >
+        <ChevronRight size={18} />
+      </button>
+
+      <div className="absolute bottom-3 left-1/2 -translate-x-1/2 z-10 flex gap-2">
+        {ABOUT_IMAGES.map((_, i) => (
+          <button
+            key={i}
+            onClick={() => {
+              setDirection(i > current ? 1 : -1);
+              setCurrent(i);
+            }}
+            className={`h-1.5 rounded-full transition-all duration-400 ${
+              i === current ? 'w-6 bg-gold' : 'w-1.5 bg-white/60 hover:bg-white'
+            }`}
+            aria-label={`Go to image ${i + 1}`}
+          />
+        ))}
+      </div>
+    </div>
   );
 }
 
