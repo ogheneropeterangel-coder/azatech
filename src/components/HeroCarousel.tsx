@@ -2,10 +2,42 @@ import { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence, type Variants } from 'framer-motion';
 import { ChevronRight } from 'lucide-react';
 import { getWhatsAppLink } from '../utils/constants';
-import { IMG } from '../utils/images';
+import { IMG, ABOUT_IMAGES } from '../utils/images';
 import CTAButton from './CTAButton';
 
 const slides = [
+  {
+    image: ABOUT_IMAGES[3],
+    eyebrow: 'ABOUT AZATECH',
+    headline: 'Connecting Needs to Solutions.',
+    paragraph: 'Azatech Global Supply Chain Limited makes access to medical equipment, laboratory technology and specialized solutions more straightforward for organizations in Nigeria and beyond.',
+    cta1: { label: 'Discover Azatech', to: '/about' },
+    cta2: { label: 'Talk to Us on WhatsApp', href: getWhatsAppLink('I would like to discuss a medical equipment / technology supply requirement.') },
+  },
+  {
+    image: ABOUT_IMAGES[2],
+    eyebrow: 'GLOBAL SUPPLY CHAIN',
+    headline: 'Local Understanding. Global Supply Opportunities.',
+    paragraph: 'We help simplify the journey from equipment sourcing to supply-chain coordination, delivery and support.',
+    cta1: { label: 'Discuss Your Requirement', href: getWhatsAppLink('I would like to discuss my equipment supply requirement.') },
+    cta2: { label: 'Learn More', to: '/supply-chain' },
+  },
+  {
+    image: ABOUT_IMAGES[4],
+    eyebrow: 'WHO WE ARE',
+    headline: 'A Supply Chain Built Around Your Requirement.',
+    paragraph: 'Understand the requirement, identify supply opportunities, coordinate the journey and move forward with confidence.',
+    cta1: { label: 'About Azatech', to: '/about' },
+    cta2: { label: 'Request a Quote', to: '/request-quote' },
+  },
+  {
+    image: ABOUT_IMAGES[0],
+    eyebrow: 'SOLUTIONS',
+    headline: 'One Requirement. Multiple Supply Possibilities.',
+    paragraph: 'From diagnostic imaging to laboratory and clinical equipment, Azatech helps organizations explore equipment solutions aligned with their requirements.',
+    cta1: { label: 'Explore Solutions', to: '/solutions' },
+    cta2: { label: 'Talk to Us', href: getWhatsAppLink('I am interested in your medical equipment and technology solutions.') },
+  },
   {
     image: IMG.globalNetwork,
     eyebrow: 'CONNECT • MOVE • DELIVER',
@@ -112,7 +144,7 @@ export default function HeroCarousel() {
               animate="visible"
               className="text-4xl md:text-5xl lg:text-7xl font-bold leading-tight tracking-tight text-white mb-6"
             >
-              {slide.headline}
+              <TypewriterHeadline text={slide.headline} />
             </motion.h1>
 
             <motion.p
@@ -163,5 +195,28 @@ export default function HeroCarousel() {
         </div>
       </div>
     </section>
+  );
+}
+
+function TypewriterHeadline({ text }: { text: string }) {
+  const [length, setLength] = useState(0);
+
+  useEffect(() => {
+    let i = 0;
+    const interval = setInterval(() => {
+      i += 1;
+      setLength(i);
+      if (i >= text.length) clearInterval(interval);
+    }, 90);
+    return () => clearInterval(interval);
+  }, [text]);
+
+  const typed = text.slice(0, length);
+
+  return (
+    <span className="inline-block">
+      {typed}
+      <span className="inline-block w-[0.08em] h-[0.9em] translate-y-[0.06em] bg-gold ml-1 animate-pulse" />
+    </span>
   );
 }

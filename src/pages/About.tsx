@@ -4,7 +4,7 @@ import CTAButton from '../components/CTAButton';
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useScrollReveal } from '../hooks/useScrollReveal';
-import { MessageCircle, ChevronLeft, ChevronRight } from 'lucide-react';
+import { MessageCircle, ChevronLeft, ChevronRight, Target, Globe, Gauge, Headphones, HeartHandshake } from 'lucide-react';
 import { IMG, ABOUT_IMAGES } from '../utils/images';
 import { META_DEFAULTS, getWhatsAppLink } from '../utils/constants';
 
@@ -31,11 +31,18 @@ export default function About() {
         <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
             <div>
+              <span className="text-xs tracking-[0.2em] uppercase font-medium text-gold mb-3 inline-block">Who We Are</span>
+              <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-navy mb-6">
+                A Partner That Makes Access to the Right Equipment Simpler.
+              </h2>
               <p className="text-lg text-gray-dark leading-relaxed mb-6">
-                Azatech Global Supply Chain Limited is focused on making access to medical equipment, laboratory technology and specialized technology solutions more straightforward for organizations in Nigeria and beyond.
+                Azatech Global Supply Chain Limited works across medical equipment, laboratory technology and specialized technology solutions — connecting organizations in Nigeria and beyond to the equipment their work depends on.
+              </p>
+              <p className="text-base text-gray-dark leading-relaxed mb-6">
+                We believe supply should be more than a transaction. It should be a coordinated journey — from understanding the requirement, to identifying supply opportunities, to moving equipment and supporting the client beyond delivery.
               </p>
               <p className="text-base text-gray-dark leading-relaxed">
-                We believe supply should be more than a transaction. It should be a coordinated journey — from understanding the requirement to identifying supply opportunities, moving equipment and supporting the client beyond delivery.
+                By combining global supply connections with a requirement-led approach, we help facilities move from a clear need to a working solution with confidence.
               </p>
             </div>
             <AboutCarousel />
@@ -44,6 +51,8 @@ export default function About() {
       </section>
 
       <VisionMission />
+
+      <WhyChooseUs />
 
       <section className="py-20 lg:py-28 bg-cream">
         <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
@@ -154,6 +163,77 @@ function VisionMission() {
         </div>
       </div>
     </section>
+  );
+}
+
+function WhyChooseUs() {
+  const enriched = [
+    {
+      title: 'Requirement-Led',
+      icon: Target,
+      description:
+        'We do not start with a product catalogue. We start with what you actually need — the function, the setting and the outcome — then work back to the right supply route.',
+    },
+    {
+      title: 'Global Perspective',
+      icon: Globe,
+      description:
+        'We look beyond a single source when exploring supply opportunities, giving your organization more options across international markets.',
+    },
+    {
+      title: 'Efficiency',
+      icon: Gauge,
+      description:
+        'We aim to make the path from requirement to delivery more straightforward — coordinating sourcing, logistics and handover so you can focus on your work.',
+    },
+    {
+      title: 'Professional Communication',
+      icon: Headphones,
+      description:
+        'Clear, dependable communication throughout the process. You always know where your requirement stands and what happens next.',
+    },
+    {
+      title: 'Long-Term Support',
+      icon: HeartHandshake,
+      description:
+        'Our relationship is built to extend beyond a transaction, with support after delivery where applicable so the equipment keeps delivering value.',
+    },
+  ];
+
+  return (
+    <section className="py-20 lg:py-28 bg-white">
+      <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
+        <SectionHeader
+          eyebrow="WHY CHOOSE US"
+          title="Why Organizations Work With Azatech"
+          description="Sourcing equipment is about more than finding a supplier. It is about working with a partner who understands your requirement, coordinates the journey and stays with you after delivery."
+        />
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 mt-12">
+          {enriched.map((item, i) => (
+            <WhyCard key={item.title} {...item} index={i} />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function WhyCard({ title, icon: Icon, description, index }: { title: string; icon: typeof Target; description: string; index: number }) {
+  const { ref, isVisible } = useScrollReveal(0.1);
+  return (
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: 20 }}
+      animate={isVisible ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.5, delay: index * 0.08 }}
+      className="bg-cream rounded-lg p-6 border border-gray-100 hover:border-gold/40 hover:shadow-md transition-all duration-300"
+    >
+      <div className="w-10 h-10 rounded-full bg-navy flex items-center justify-center mb-4">
+        <Icon size={16} className="text-gold" />
+      </div>
+      <h3 className="text-sm font-semibold text-navy mb-2">{title}</h3>
+      <p className="text-xs text-gray-dark leading-relaxed">{description}</p>
+    </motion.div>
   );
 }
 

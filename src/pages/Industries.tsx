@@ -3,16 +3,82 @@ import CTAButton from '../components/CTAButton';
 import { motion } from 'framer-motion';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import { ChevronRight } from 'lucide-react';
-import { IMG } from '../utils/images';
+import { IMG, IMG_IBB } from '../utils/images';
 import { META_DEFAULTS, getWhatsAppLink } from '../utils/constants';
 
 const industries = [
-  { title: 'Hospitals', description: 'Medical equipment and technology solutions for healthcare facilities.', image: IMG.doctor },
-  { title: 'Medical Laboratories', description: 'Laboratory and diagnostic technology solutions.', image: IMG.labTestTubes },
-  { title: 'Diagnostic Centres', description: 'Equipment solutions for imaging and diagnostic environments.', image: IMG.radiology },
-  { title: 'Clinics', description: 'Equipment and technology requirements for clinical operations.', image: IMG.medicalProfessional },
-  { title: 'Healthcare Projects', description: 'Supply support for new, expanding or upgrading facilities.', image: IMG.surgery },
-  { title: 'Organizations & Businesses', description: 'Specialized technology and equipment sourcing based on operational requirements.', image: IMG.globalNetwork },
+  {
+    title: 'Hospitals',
+    description:
+      'Hospitals depend on reliable diagnostic and clinical equipment to deliver quality care, day in and day out. When a department is being set up, upgraded or expanded, the right equipment has to be in place — and it has to keep performing.',
+    points: [
+      'Imaging and diagnostic equipment for radiology and imaging departments.',
+      'Clinical and critical-care equipment for treatment environments.',
+      'Sourcing support for new builds, upgrades and facility expansion.',
+      'Coordination from supplier to your facility, with after-sales support.',
+    ],
+    image: IMG.doctor,
+  },
+  {
+    title: 'Medical Laboratories',
+    description:
+      'Laboratories rely on precision analyzers and reliable workflows to deliver accurate results on time. From a single analyzer to a fully equipped lab, the equipment must match the testing your lab actually carries out.',
+    points: [
+      'Analyzers and specialized laboratory equipment for your testing menu.',
+      'Help identifying equipment that matches your lab workflows and volumes.',
+      'Supply coordination for new laboratories and capacity expansion.',
+      'Ongoing support where applicable, so equipment keeps serving your lab.',
+    ],
+    image: IMG.labTestTubes,
+  },
+  {
+    title: 'Diagnostic Centres',
+    description:
+      'Diagnostic centres are defined by the reliability of the technology behind them. Patients and referring clinicians rely on equipment that is accurate, dependable and available — every single time.',
+    points: [
+      'Imaging, laboratory and point-of-care equipment for diagnostic services.',
+      'Guidance on equipment suited to your centre\u2019s focus and case volumes.',
+      'Supply coordination, delivery and installation support.',
+      'After-sales assistance to protect uptime and long-term performance.',
+    ],
+    image: IMG.radiology,
+  },
+  {
+    title: 'Clinics',
+    description:
+      'Clinics need practical, dependable equipment that fits the way care is delivered on the ground. The right technology keeps daily operations smooth and helps clinicians serve patients with confidence.',
+    points: [
+      'Equipment matched to the scope of care your clinic provides.',
+      'Solutions that fit the size and workflow of smaller facilities.',
+      'Sourcing, coordination and delivery handled end to end.',
+      'Support that continues beyond the point of delivery.',
+    ],
+    image: IMG.medicalProfessional,
+  },
+  {
+    title: 'Healthcare Projects',
+    description:
+      'New builds and expansion projects demand tight coordination — getting the right equipment to the right place at the right time. We support projects from planning around your equipment needs through sourcing, logistics and installation.',
+    points: [
+      'Equipment planning and sourcing for new and expanding facilities.',
+      'Coordination across multiple departments and equipment categories.',
+      'Logistics management from source to project site.',
+      'Installation support and after-sales assistance.',
+    ],
+    image: IMG.surgery,
+  },
+  {
+    title: 'Organizations & Businesses',
+    description:
+      'Beyond healthcare facilities, organizations and businesses across sectors have specialized equipment and technology requirements. We help connect those requirements to appropriate supply opportunities.',
+    points: [
+      'Specialized equipment and technology sourcing for operational needs.',
+      'Global supply connections beyond local markets.',
+      'Supply-chain coordination from requirement to delivery.',
+      'Professional communication and dependable follow-through.',
+    ],
+    image: IMG_IBB.organisations,
+  },
 ];
 
 export default function Industries() {
@@ -45,7 +111,7 @@ export default function Industries() {
   );
 }
 
-function IndustryBlock({ title, description, image, index }: { title: string; description: string; image: string; index: number }) {
+function IndustryBlock({ title, description, points, image, index }: { title: string; description: string; points: string[]; image: string; index: number }) {
   const { ref, isVisible } = useScrollReveal(0.1);
   const isReversed = index % 2 === 1;
 
@@ -62,6 +128,14 @@ function IndustryBlock({ title, description, image, index }: { title: string; de
         </span>
         <h3 className="text-2xl md:text-3xl font-bold text-navy mb-4">{title}</h3>
         <p className="text-base text-gray-dark leading-relaxed mb-6">{description}</p>
+        <ul className="space-y-3 mb-8">
+          {points.map((point) => (
+            <li key={point} className="flex items-start gap-3 text-sm text-gray-dark leading-relaxed">
+              <span className="w-1.5 h-1.5 rounded-full bg-gold shrink-0 mt-2" />
+              <span>{point}</span>
+            </li>
+          ))}
+        </ul>
         <CTAButton href={getWhatsAppLink(`I would like to discuss solutions for ${title.toLowerCase()}.`)} variant="primary" icon={<ChevronRight size={16} />}>
           Discuss Your Requirement
         </CTAButton>

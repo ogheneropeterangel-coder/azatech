@@ -40,6 +40,8 @@ export const IMG_IBB = {
   automaticRefractometer: 'https://i.ibb.co/d4W00k43/AUTO-REFRACTOMETERS.png',
   elisaAnalyzer: 'https://i.ibb.co/60g4FXGz/AUTOMATED-ELISA-ANALYZERS.png',
   tool: 'https://i.ibb.co/0pvymzJf/tool.png',
+  dsa: 'https://i.ibb.co/MyMGqJj0/dsa.png',
+  organisations: 'https://i.ibb.co/7xcSpxCp/orgai-nisation.png',
 };
 
 // About page carousel images
@@ -65,7 +67,7 @@ export const EQUIPMENT_ITEM_IMAGES: Record<string, string> = {
   'CT Systems': IMG.ctScanner,
   'Digital X-Ray Systems': IMG.xray,
   'Color Doppler': IMG.radiology,
-  'DSA Systems': IMG.radiology,
+  'DSA Systems': IMG_IBB.dsa,
   'Anesthesia Machines': IMG.surgery,
   'Hemodialysis Equipment': IMG.doctor,
   'Automatic Refractometers': IMG_IBB.automaticRefractometer,

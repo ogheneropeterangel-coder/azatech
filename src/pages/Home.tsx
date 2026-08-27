@@ -261,12 +261,12 @@ function GlobalSupplyStory() {
 
 function IndustriesSection() {
   const industries = [
-    { title: 'Hospitals', desc: 'Medical equipment and technology solutions for healthcare facilities.' },
-    { title: 'Medical Laboratories', desc: 'Laboratory and diagnostic technology solutions.' },
-    { title: 'Diagnostic Centres', desc: 'Equipment solutions for imaging and diagnostic environments.' },
-    { title: 'Clinics', desc: 'Equipment and technology requirements for clinical operations.' },
-    { title: 'Healthcare Projects', desc: 'Supply support for new, expanding or upgrading facilities.' },
-    { title: 'Organizations & Businesses', desc: 'Specialized technology and equipment sourcing.' },
+    { title: 'Hospitals', desc: 'Equipment for diagnostic, clinical and critical-care environments — from new builds to upgrades and expansion.' },
+    { title: 'Medical Laboratories', desc: 'Analyzers and lab technology that match your testing menu, workflows and capacity.' },
+    { title: 'Diagnostic Centres', desc: 'Imaging, laboratory and point-of-care equipment built for accuracy, reliability and uptime.' },
+    { title: 'Clinics', desc: 'Practical, dependable equipment that fits the scope of care and the size of your facility.' },
+    { title: 'Healthcare Projects', desc: 'End-to-end supply support — planning, sourcing and coordinated delivery for new and expanding facilities.' },
+    { title: 'Organizations & Businesses', desc: 'Specialized equipment and technology sourcing for operational requirements, backed by professional follow-through.' },
   ];
   return (
     <section className="py-20 lg:py-28 bg-cream">
